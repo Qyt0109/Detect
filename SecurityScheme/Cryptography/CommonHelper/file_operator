@@ -1,0 +1,41 @@
+import os
+
+class FileOperator:
+    @staticmethod
+    def FileToBinary(path):
+        """
+        Convert file to binary data\n
+        + path: path to the file to convert\n
+        -> bytes
+        """
+        # Check if path is a file path or not
+        if not isinstance(path, str) or not path:
+            raise ValueError("Invalid file path")
+
+        # Check if the file is existing or not
+        if not os.path.isfile(path):
+            raise FileNotFoundError("File not found")
+
+        # Try to read the file
+        try:
+            # Read file as binary from the path
+            with open(path, 'rb') as file:
+                binary_data = file.read()
+        # Check if have permisstion to access the file or not
+        except (IOError, PermissionError) as e:
+            raise e
+
+        return binary_data
+    
+    @staticmethod
+    def BinaryToFile(output_path, binary_data):
+        """
+        Convert binary data to file
+        + output_path: path to save converted file from binary data
+        + binary_data: binary data to convert
+        """
+        try:
+            with open(output_path, 'wb') as file:
+                file.write(binary_data)
+        except IOError as e:
+            print(f"Error writing to file: {e}")

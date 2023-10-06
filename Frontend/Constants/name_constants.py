@@ -1,0 +1,1 @@
+APP_TITLE = "MÁY BẮN TỐC ĐỘ"

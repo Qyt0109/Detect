@@ -1,0 +1,127 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+#: import CameraThread KivyCameraThread.CameraThread
+#: import Factory kivy.factory.Factory
+MainLayout:
+    orientation: 'vertical'
+    # Layouts
+    HeaderLayout:
+        id: _header_layout_
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: "80dp"
+        canvas.before:
+            Color:
+                rgba: (0, 1, 1, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    ScreenLayoutManager:
+        id: screen_manager
+        canvas.before:
+            Color:
+                rgba: 1, 0, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    FooterLayout:
+        size_hint_y: None
+        height: "80dp"
+        canvas.before:
+            Color:
+                rgba: (1, 1, 0, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+<HeaderLayout>:
+    DeviceStatusLayout:
+        id: _device_status_layout_
+        padding: '16dp'
+        spacing: '8dp'
+
+<DeviceStatusLayout>:
+    MDFloatingActionButton:
+        icon: "equal-box"
+        text_color: "white"
+        md_bg_color: "black"
+        badge_icon: ""
+        on_release: root.showNotification()
+    MDFloatingActionButton:
+        id: _status_gps_
+        icon: "map-marker-off"
+        text_color: "red"
+        md_bg_color: "black"
+        on_release: app.checkStatus("GPS")
+    MDFloatingActionButton:
+        id: _status_internet_
+        icon: "web-off"
+        text_color: "red"
+        md_bg_color: "black"
+        on_release: app.checkStatus("INTERNET")
+    MDFloatingActionButton:
+        id: _status_bluetooth_
+        icon: "bluetooth-off"
+        text_color: "red"
+        md_bg_color: "black"
+        on_release: app.checkStatus("BLUETOOTH")
+    MDFloatingActionButton:
+        id: _status_battery_
+        icon: "battery"
+        text_color: "red"
+        md_bg_color: "black"
+        on_release: app.checkStatus("BATTERY")
+
+<DeviceStatusPopup@Popup>
+    auto_dismiss: False
+    size_hint: 0.5, 1
+    pos_hint: {'center_x': 0.5,'top': 1}
+    MDFloatingActionButton:
+        icon: "close-box"
+        badge_icon: ""
+        text_color: "red"
+        on_release: root.dismiss()
+
+<FooterLayout>:
+    ScreenSwitchLayout:
+
+<ScreenSwitchLayout>:
+    MDIconButton:
+        id: _go_to_capturing_image_screen_button_
+        on_press: root.onGoToCapturingImageScreenButtonPress(self)
+        icon: "image-multiple"
+        user_font_size: "35sp"
+        md_bg_color: app.theme_cls.primary_color
+    MDIconButton:
+        id: _go_to_image_gallery_screen_button_
+        on_press: root.onGoToImageGalleryScreenButtonPress(self)
+        icon: "image-multiple"
+        user_font_size: "35sp"
+        md_bg_color: app.theme_cls.primary_color
+
+
+<ScreenLayoutManager>:
+    transition: FadeTransition(duration=0.5)
+    CapturingImageScreenLayout:
+        name: 'capturing_image_screen_'
+    CapturedImageScreenLayout:
+        name: 'captured_image_screen_'
+    ImageGalleryScreenLayout:
+        name: 'image_gallery_screen_'
+        
+<CapturingImageScreenLayout>:
+    CaptureImageHolderLayout:
+
+<CaptureImageHolderLayout>:
+    Camera:
+        id:_camera_
+        index: 0
+        resolution:(1920, 1080)
+        size_hint: (1, 1)
+        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+        play: True
+        
+    
+    
+<CapturedImageScreenLayout>:
+
+<ImageGalleryScreenLayout>:

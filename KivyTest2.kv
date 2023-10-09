@@ -1,0 +1,23 @@
+#: import Factory kivy.factory.Factory
+MyLayout:
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        Label:
+            text: "Popup"
+            content: "Hello"
+        Button:
+            text: "Click me to pop"
+            on_release: Factory.MyPopup().open()
+
+<MyPopup@Popup>
+    auto_dismiss: False
+    size_hint: 0.5, 1
+    pos_hint: {'center_x': 0.5,'top': 1}
+
+    title: "This is a popup box"
+    MDFloatingActionButton:
+        icon: "close-box"
+        badge_icon: ""
+        text_color: "red"
+        on_release: root.dismiss()

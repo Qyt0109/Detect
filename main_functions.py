@@ -1,6 +1,6 @@
 from ast import Tuple
-from Backend.Common.gps import get_current_gps
-from Backend.Services.request import get_map_info_from_server
+from Backend.Common.gps import getCurrentGPS
+from Backend.Services.request import getMapInfoFromServer
 from Backend.Models.models import MapInfo, ViolationImageModel
 from Frontend.Models.models import ImageModel
 from ImageProcessing.detect import detect_speed_plate_schema
@@ -10,9 +10,9 @@ MAP_IMAGE_PATH = "Frontend/Images/Map/map.png"
 def pullGPSAndMapInfo()->Tuple[float, float, MapInfo]:
     # -> R Lấy dữ liệu map và dữ liệu cần thiết từ server vào lúc bắt đầu phiên làm việc hoặc khi cần cập nhật lại
     # Lấy vị trí
-    lon, lat = get_current_gps()
+    lon, lat = getCurrentGPS()
     # Lấy từ server thông tin map tại vị trí
-    map_info = get_map_info_from_server(latitude=lat, longitude=lon)
+    map_info = getMapInfoFromServer(latitude=lat, longitude=lon)
     """
 	MapInfo(image= image,
 			speed_limit=speed_limit,

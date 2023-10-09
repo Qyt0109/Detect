@@ -1,6 +1,6 @@
 from datetime import datetime
-from Backend.Services.request import get_map_info_from_server
-from Backend.Common.gps import get_current_gps
+from Backend.Services.request import getMapInfoFromServer
+from Backend.Common.gps import getCurrentGPS
 from Backend.Common.defined_constants import ColorConst, JoinImageDirectionConst
 from Backend.Common.image_features import CustomImage
 from Frontend.Models.models import ImageModel
@@ -14,9 +14,9 @@ from io import BytesIO
 
 # -> Example usage:
 # -> R Get data
-lon, lat = get_current_gps()
+lon, lat = getCurrentGPS()
 
-image_bytes, speed_limit, plan_id = get_map_info_from_server(lat,lon)
+image_bytes, speed_limit, plan_id = getMapInfoFromServer(lat,lon)
 image_path = 'Frontend/Images/CapturedImages/250723-024717.jpg'
 map_image_path = "Frontend/Images/Map/map.png"
 license_plate = detect_license_plate_schema(image_path)

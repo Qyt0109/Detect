@@ -1,6 +1,6 @@
 from datetime import datetime
-from Backend.Services.request import get_map_info_from_server
-from Backend.Common.gps import get_current_gps
+from Backend.Services.request import getMapInfoFromServer
+from Backend.Common.gps import getCurrentGPS
 from Backend.Common.defined_constants import ColorConst, JoinImageDirectionConst
 from Backend.Common.image_features import CustomImage
 from Frontend.Models.models import ImageModel

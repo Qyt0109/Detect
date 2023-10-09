@@ -6,11 +6,11 @@ from PIL import Image
 class MapInfo:
     """Lớp MapInfo tạo đối tượng lưu trữ dữ liệu về thông tin bản đồ"""
     def __init__(self,
-                 image:Image,
-                 speed_limit:int,
-                 plan_id:int,
-                 latitude:float,
-                 longitude:float) -> None:
+                 image:Image = None,
+                 speed_limit:int = None,
+                 plan_id:int = None,
+                 latitude:float = None,
+                 longitude:float = None) -> None:
         self.image = image
         self.speed_limit = speed_limit
         self.plan_id = plan_id

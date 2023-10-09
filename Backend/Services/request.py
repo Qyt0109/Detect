@@ -8,7 +8,7 @@ import requests
 from datetime import datetime
 from PIL import Image
 
-def get_map_info_from_server(latitude:float,
+def getMapInfoFromServer(latitude:float,
                         longitude:float)->MapInfo:
     """-> MapInfo(image, speed_limit, plan_id, latitude, longitude) | None"""
     # Get the current date and time

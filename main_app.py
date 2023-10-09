@@ -37,8 +37,8 @@ from Frontend.Models.qt_models import CameraCapturedImage, Timer, TimerMode
 # Frontend models
 
 # Backend services
-from Backend.Common.gps import get_current_gps
-from Backend.Services.request import get_map_info_from_server, MapInfo
+from Backend.Common.gps import getCurrentGPS
+from Backend.Services.request import getMapInfoFromServer, MapInfo
 from Backend.Database.local_database import DatabaseManager, ImageDatabaseManager
 # Backend services
 
@@ -251,9 +251,9 @@ class MainWindow(QMainWindow):
     
     def get_map(self):
         self.ui.label_map_info.setText("Xin đợi...")
-        lon, lat = get_current_gps()
+        lon, lat = getCurrentGPS()
         if lon and lat:
-            self.map_info = get_map_info_from_server(longitude=lon, latitude=lat)
+            self.map_info = getMapInfoFromServer(longitude=lon, latitude=lat)
         else:
             noity = "Không lấy được thông tin toạ độ"
             self.add_event(QueueEvent(noity))

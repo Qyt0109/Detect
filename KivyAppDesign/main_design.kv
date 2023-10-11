@@ -1,0 +1,26 @@
+#: import Header KivyAppDesign.Components.header.Header
+#: import Footer KivyAppDesign.Components.footer.Footer
+#: import MainScreenManager KivyAppDesign.Screens.screen_manager.MainScreenManager
+<MainDesign>:
+    orientation: 'vertical'
+    md_bg_color: 1, 1, 0, 1
+    # Header
+    Header:
+        id: header
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: "80dp"
+    # Screen manager
+    MainScreenManager:
+        id: screen_manager
+        canvas.before:
+            Color:
+                rgba: 1, 0, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    # Footer
+    Footer:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: "80dp"

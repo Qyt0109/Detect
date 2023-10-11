@@ -3,7 +3,6 @@ import subprocess
 from threading import Thread
 import time
 import psutil
-import pybluez
 
 def _extractLast(path):
     parts = path.split("/")  # Split the string by '/'
@@ -79,19 +78,9 @@ def _onInternetStatusCheckDone(result):
     else:
         print("No internet connection.")
 
-def getBluetoothStatus(result_callback=None):
-    def _bluetooth_check():
-        try:
-            # Run a system-level command to check if Bluetooth is available
-            subprocess.check_output("hciconfig", shell=True)
-            if result_callback:
-                result_callback(True)
-        except subprocess.CalledProcessError:
-            if result_callback:
-                result_callback(False)
-    
-    bluetooth_check_thread = Thread(target=_bluetooth_check)
-    bluetooth_check_thread.start()
+def getBluetoothStatus():
+    #TODO: GET BLUETOOTH STATUS
+    return True
 
 # Callback function to handle the result
 def _onBluetoothStatusCheckDone(result):
@@ -99,6 +88,11 @@ def _onBluetoothStatusCheckDone(result):
         print("Bluetooth is available.")
     else:
         print("Bluetooth is not available.")
+
+def getBatteryStatus():
+    battery = psutil.sensors_battery()
+    # f"Battery Status: {charging_status}, Battery Percentage: {battery_percent}%"
+    return battery.power_plugged, battery.percent # Charging status, battery percent
 
 if __name__ == "__main__":
     # disk_status = getDiskStatus()

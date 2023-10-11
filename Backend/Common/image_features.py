@@ -192,3 +192,50 @@ class CustomImage:
             image_bytes = byte_io.read()
         base64_image_bytes = base64.b64encode(image_bytes)
         return base64_image_bytes
+    
+def image_to_bytes(image:Image, format:str = 'JPEG')->bytes:
+    try:
+        # Save PIL Image object into image bytes data
+        with io.BytesIO() as byte_io:
+            image.save(byte_io, format = format)
+            byte_io.seek(0)
+            image_bytes = byte_io.read()
+        return image_bytes
+    except Exception as e:
+        print(f"Error creating image bytes data from PIL Image object: {e}")
+        return None
+
+def bytes_to_image(image_bytes:bytes)->Image:
+    # Check if the data starts with common image file headers
+    image_type = get_image_type(image_bytes)
+    if not image_type:
+        return None
+    try:
+        # Create PIL Image object from image bytes data
+        image = Image.open(io.BytesIO(image_bytes))
+        return image
+    except Exception as e:
+        print(f"Error creating PIL Image object from image bytes data: {e}")
+        return None
+
+def get_image_type(image_bytes:bytes):
+    # Check if the data starts with common image file headers
+    image_headers = [
+        # (header_byte, image_type)
+        (b'\xFF\xD8\xFF', "JPEG"),  # JPEG
+        (b'\x89PNG', "PNG"),        # PNG
+        (b'GIF', "GIF"),            # GIF
+        (b'\x42\x4D', "BMP"),       # BMP
+    ]
+
+    for header_byte, image_type in image_headers:
+        if image_bytes.startswith(header_byte):
+            return image_type
+
+    return None  # Return None if the image type is not recognized
+
+if __name__ == "__main__":
+    # Example usage:
+    image_data = b'\xFF\xD8\xFF'  # This is the JPEG header
+    image_type = get_image_type(image_data)
+    print(f"The image type is {image_type}")

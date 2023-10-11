@@ -17,6 +17,9 @@ class MapInfo:
         self.latitude = latitude
         self.longitude = longitude
 
+    def print(self):
+        return f"Bản đồ "
+
 class ViolationImageModel():
     """Hình ảnh vi phạm căn cứ xử phạt (Bản ảnh chuẩn hoá)\n
     Một hình ảnh có thể được sử dụng để làm căn cứ xử phạt cần phải có đủ những yếu tố được quy định trong Thông tư 65/2020/TT-BCA [3] như sau:

@@ -14,7 +14,7 @@ with io.BytesIO() as byte_io:
     byte_io.seek(0)
     image_bytes = byte_io.read()
 base64_image_bytes = base64.b64encode(image_bytes).decode('utf-8')
-print(base64_image_bytes)
+print(len(base64_image_bytes))
 
 # Now, you have the image saved as bytes.
 # You can send the bytes to another process, store it in a database, or do anything you want.
@@ -22,4 +22,5 @@ print(base64_image_bytes)
 # To create a new PIL Image object from the bytes data:
 new_image = Image.open(io.BytesIO(image_bytes))
 new_image.save("output.jpg")
+print("Saved to output.jpg")
 # Now, you have a new PIL Image object created from the bytes data.

@@ -24,8 +24,6 @@ from kivy.metrics import dp
 from kivy.properties import StringProperty, BooleanProperty, ObjectProperty
 
 
-from KivyColors import ColorRGBA
-from KivyCameraThread import CameraThread
 
 #Config.set('graphics', 'width', 1200)
 #Config.set('graphics', 'height', 800)

@@ -1,0 +1,8 @@
+#: import CapturingScreen KivyAppDesign.Screens.capturing.CapturingScreen
+
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+<MainScreenManager>:
+    transition: FadeTransition(duration=0.5)
+    CapturingScreen:
+        name: "capturing_screen"

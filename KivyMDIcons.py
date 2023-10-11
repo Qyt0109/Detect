@@ -23,7 +23,7 @@ RecycleView:
         'icon_name': key,
         'halign': 'center',
         'font_size': FONT_SIZE,
-        } for key, value in md_icons.items()]
+        } for key, value in sorted(md_icons.items())]
     RecycleGridLayout:
         cols: root.width // FONT_SIZE
         size_hint_y: None

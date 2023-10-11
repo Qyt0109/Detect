@@ -1,0 +1,25 @@
+<CapturingCamera>:
+    orientation: "vertical"
+    Camera:
+        id: capturing_camera
+        resolution: (2560, 1600)
+        size_hint: (1, 1)  # You can adjust the width and height as needed
+        pos_hint: {'top': 1}  # This will anchor the camera to the top of the layout
+        index: 0
+        play: True
+    MDFloatingActionButton:
+        icon: "camera"
+        md_bg_color: 0, 1, 1, 1
+        size_hint_y: None
+        height: '64px'
+        x: self.parent.width - self.width  # Align to the right edge
+        pos_hint: {'center_y': 0.5}
+        on_release: root.capture(callback = app.onCameraCaptured)
+    MDFloatingActionButton:
+        icon: "camera-flip"
+        md_bg_color: 0, 1, 1, 1
+        size_hint_y: None
+        height: "32px"
+        x: 0
+        pos_hint: {'center_y': 0.5}
+        on_release: root.change_camera()

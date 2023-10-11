@@ -1,0 +1,41 @@
+<Header>:
+    DeviceStatuses:
+        id: device_statuses
+        padding: '10dp'
+        spacing: '8dp'
+    Settings:
+
+<Settings>:
+    md_bg_color: "black"
+
+<SettingPanel>:
+
+<DeviceStatuses>:
+    Status:
+        icon: "equal-box"
+        text_color: "white"
+        badge_icon: ""
+        on_release: root.showNotification()
+    Status:
+        id: status_gps
+        icon: "map-marker-off"
+        text_color: "red"
+        on_release: root.checkStatusGPS()
+    Status:
+        id: status_internet
+        icon: "web-off"
+        text_color: "red"
+        on_release: root.checkStatusInternet()
+    Status:
+        id: status_bluetooth
+        icon: "bluetooth-off"
+        text_color: "red"
+        on_release: root.checkStatusBluetooth()
+    Status:
+        id: status_battery
+        icon: "battery"
+        text_color: "red"
+        on_release: root.checkStatusBattery()
+
+<Status>:
+    md_bg_color: "black"

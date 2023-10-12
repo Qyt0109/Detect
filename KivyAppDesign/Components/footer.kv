@@ -1,3 +1,33 @@
 <Footer>:
-    Label:
-        text: "Footer"
+    padding: "20px"
+    spacing: "40px"
+    MDIconButton:
+        id: go_to_capturing_screen
+        md_bg_color: 80/256, 80/256, 80/256, 1
+        theme_icon_color: "Custom"
+        icon_color: "white"
+        icon: 'camera'
+        pos_hint: {'center_y':.5}
+        size_hint: (1, None)
+        icon_size: '80px'
+        on_release: root.goToScreen("capturing_screen")
+    MDIconButton:
+        id: go_to_captured_screen
+        md_bg_color: 80/256, 80/256, 80/256, 1
+        theme_icon_color: "Custom"
+        icon_color: "white"
+        icon: 'image'
+        pos_hint: {'center_y':.5}
+        size_hint: (1, None)
+        icon_size: '80px'
+        on_release: root.goToScreen("captured_screen")
+    MDIconButton:
+        id: go_to_album_screen
+        md_bg_color: 80/256, 80/256, 80/256, 1
+        theme_icon_color: "Custom"
+        icon_color: "white"
+        icon: 'image-multiple'
+        pos_hint: {'center_y':.5}
+        size_hint: (1, None)
+        icon_size: '80px'
+        on_release: root.goToScreen("album_screen")

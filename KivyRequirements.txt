@@ -1,4 +1,11 @@
-kivy
+# sudo apt-get update
+# sudo apt-get install -y python3-pip python3
+
+# pip install --upgrade setuptools
+# pip install ez_setup
 pillow
+Cython
+kivy
+kivymd
 pygame
 opencv-python

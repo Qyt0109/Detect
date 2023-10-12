@@ -3,24 +3,20 @@
 #: import MainScreenManager KivyAppDesign.Screens.screen_manager.MainScreenManager
 <MainDesign>:
     orientation: 'vertical'
-    md_bg_color: 1, 1, 0, 1
     # Header
     Header:
         id: header
+        md_bg_color: 120/256, 120/256, 120/256, 1
         orientation: 'horizontal'
         size_hint_y: None
-        height: "80dp"
+        height: "160px"
     # Screen manager
     MainScreenManager:
         id: screen_manager
-        canvas.before:
-            Color:
-                rgba: 1, 0, 1, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
     # Footer
     Footer:
+        id: footer
+        md_bg_color: 120/256, 120/256, 120/256, 1
         orientation: 'horizontal'
         size_hint_y: None
-        height: "80dp"
+        height: "160px"

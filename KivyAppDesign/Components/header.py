@@ -1,5 +1,5 @@
-from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.button import MDFloatingActionButton
+from kivymd.uix.boxlayout import MDBoxLayout, BoxLayout
+from kivymd.uix.button import MDFloatingActionButton, MDRectangleFlatIconButton
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
@@ -9,7 +9,8 @@ from Backend.Common.device_status import getBatteryStatus, getBluetoothStatus, g
 from Backend.Services.request import getMapInfoFromServer
 
 class Header(MDBoxLayout):
-    pass
+    def settings(self):
+        pass
 
 class DeviceStatuses(MDBoxLayout):
     def __init__(self, *args, **kwargs):
@@ -25,13 +26,11 @@ class DeviceStatuses(MDBoxLayout):
     def showNotification(self):
 
         popup = Popup(title='Notification',
-                      pos_hint={'center_x': 0.5, 'center_t': 0.5},
-                      size_hint=(0.6, 0.8))
+                      pos_hint={'center_x': 0.5, 'center_y': 0.5},
+                      size_hint=(0.8, 0.8))
         content = MDBoxLayout(orientation='vertical')
-        content.add_widget(MDFloatingActionButton(
+        content.add_widget(MDFloatingActionButton(md_bg_color = "black",
             icon="close-box", text_color="red", on_release=popup.dismiss))
-        noity = MDBoxLayout()
-        noity.add_widget(Label(text=f"GPS: {''}"))
         popup.content = content
         popup.open()
 
@@ -105,15 +104,13 @@ class DeviceStatuses(MDBoxLayout):
         else:
             text_color = "green"
         if percent == 0:
-            percent == "outline"
-        status_battery.icon = f"battery{str_chargeing}-{percent}"
+            percent = "-outline"
+        elif percent == 100:
+            percent = ""
+        else:
+            percent = f"-{percent}"
+        status_battery.icon = f"battery{str_chargeing}{percent}"
         status_battery.text_color = text_color
 
 class Status(MDFloatingActionButton):
-    pass
-
-class Settings(MDBoxLayout):
-    pass
-
-class SettingPanel(FloatLayout):
     pass

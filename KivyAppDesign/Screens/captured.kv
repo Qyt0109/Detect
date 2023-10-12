@@ -1,1 +1,44 @@
+#: import ImageViewer KivyAppDesign.Components.image_viewer.ImageViewer
+
 <CapturedScreen>:
+    MDBoxLayout:
+        id: captured_image_layout
+        orientation: "vertical"
+        ImageViewer:
+            id: captured_image_viewer
+        MDBoxLayout:
+            padding: "20px"
+            spacing: "40px"
+            md_bg_color: 120/256, 120/256, 120/256, 1
+            size_hint_y: None
+            height: "160px"
+            MDIconButton:
+                id: go_to_capturing_screen
+                md_bg_color: 80/256, 80/256, 80/256, 1
+                theme_icon_color: "Custom"
+                icon_color: "cyan"
+                icon: 'send'
+                pos_hint: {'center_y':.5}
+                size_hint: (1, None)
+                icon_size: '80px'
+                #on_release: root.goToScreen("capturing_screen")
+            MDIconButton:
+                id: go_to_capturing_screen
+                md_bg_color: 80/256, 80/256, 80/256, 1
+                theme_icon_color: "Custom"
+                icon_color: "khaki"
+                icon: 'content-save'
+                pos_hint: {'center_y':.5}
+                size_hint: (1, None)
+                icon_size: '80px'
+                #on_release: root.goToScreen("capturing_screen")
+            MDIconButton:
+                id: go_to_capturing_screen
+                md_bg_color: 80/256, 80/256, 80/256, 1
+                theme_icon_color: "Custom"
+                icon_color: "tomato"
+                icon: 'delete'
+                pos_hint: {'center_y':.5}
+                size_hint: (1, None)
+                icon_size: '80px'
+                #on_release: root.goToScreen("capturing_screen")

@@ -1,26 +1,21 @@
 from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.button import Button
-from kivy.uix.popup import Popup
+from kivy.uix.image import Image
+from io import BytesIO
+from PIL import Image as PILImage
 
-class MyBoxLayout(BoxLayout):
-    def show_notification(self):
-        content = BoxLayout(orientation='vertical')
-        content.add_widget(Button(text='Close', on_release=self.dismiss_popup))
-        content.add_widget(Button(text='Other Action'))
-
-        popup = Popup(title='Notification',
-                      content=content,
-                      size_hint=(None, None),
-                      size=(400, 200))
-        popup.open()
-
-    def dismiss_popup(self, instance):
-        instance.parent.parent.dismiss()
-
-class MyApp(App):
+class PILImageApp(App):
     def build(self):
-        return MyBoxLayout()
+        # Load the PIL image
+        pil_image = PILImage.open("test.jpg")
+        
+        # Convert the PIL image to BytesIO
+        img_buffer = BytesIO()
+        pil_image.save(img_buffer, format='jpeg')
+        
+        # Create a Kivy Image widget and set its source to the BytesIO data
+        kivy_image = Image(source=img_buffer, allow_stretch=True)
+        
+        return kivy_image
 
 if __name__ == '__main__':
-    MyApp().run()
+    PILImageApp().run()

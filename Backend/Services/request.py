@@ -54,9 +54,15 @@ def getMapInfoFromServer(latitude:float,
         return map_info
         # Now you can process the image_bytes as needed (e.g., save it to a file, display it, etc.).
     else:
+        # TODO: REAL HANDLE THE ERROR
         # If the request was unsuccessful, handle the error
         print(f"Error: {response.status_code} - {response.json()}")
-        return None
+        image = Image.open("Frontend/Images/Map/map.png")
+        return MapInfo(image=image,
+                       speed_limit=90,
+                       plan_id=2,
+                       latitude=latitude,
+                       longitude=longitude)
 
 # Define the function to send a POST request with the ViolationImageModel instance
 def send_violation_image(image_model: ViolationImageModel):

@@ -1,0 +1,24 @@
+<Header>:
+    DeviceStatuses:
+        id: device_statuses
+        padding: '10dp'
+        spacing: '10dp'
+
+
+<DeviceStatuses>:
+    Status:
+        on_release: root.showNotification()
+    Status:
+        id: status_gps
+        on_release: root.checkStatusGPS()
+    Status:
+        id: status_internet
+        on_release: root.checkStatusInternet()
+    Status:
+        id: status_bluetooth
+        on_release: root.checkStatusBluetooth()
+    Status:
+        id: status_battery
+        on_release: root.checkStatusBattery()
+
+<Status>:

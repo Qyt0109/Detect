@@ -1,0 +1,19 @@
+<Footer>:
+    padding: "20px"
+    spacing: "40px"
+    Button:
+        id: go_to_capturing_screen
+        pos_hint: {'center_y':.5}
+        size_hint: (1, None)
+        on_release: root.goToScreen("capturing_screen")
+    Button:
+        id: go_to_captured_screen
+        pos_hint: {'center_y':.5}
+        size_hint: (1, None)
+        on_release: root.goToScreen("captured_screen")
+    Button:
+        id: go_to_album_screen
+        icon: 'image-multiple'
+        pos_hint: {'center_y':.5}
+        size_hint: (1, None)
+        on_release: root.goToScreen("album_screen")

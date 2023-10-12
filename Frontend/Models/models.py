@@ -4,9 +4,9 @@ import os
 from PIL import Image
 
 from Frontend.Models.qt_models import IMAGE_FOLDER
-from Backend.Database.local_database import DatabaseManager
+#from Backend.Database.local_database import DatabaseManager
 
-database_manager = DatabaseManager()
+#database_manager = DatabaseManager()
 
 
 class ImageModel():
@@ -27,7 +27,7 @@ class ImageModel():
                 record_time:datetime,
                 latitude:float,
                 longitude:float,
-                device_info: str,
+                device_info: str = None,
                 distance:float = None,
                 name: str = None,
                 road_address: str = None,
@@ -57,6 +57,7 @@ class ImageModel():
         print(file_path)
         self.image.save(file_path)
 
+    """
     def save_to_database(self):
         with io.BytesIO() as byte_io:
             self.image.save(byte_io, format='JPEG')
@@ -79,6 +80,7 @@ class ImageModel():
                                       description=self.description,
                                       vehicle_type=self.vehicle_type,
                                       capture_direction=self.capture_direction)
+    """
 
     def describe(self):
         not_defined = 'Chưa xác định'
@@ -87,10 +89,10 @@ class ImageModel():
         Biển kiểm soát: {self.license_plate if self.license_plate else not_defined}\n\
         Tốc độ ghi nhận: {str(self.speed) + '(km/h)' if self.speed else not_defined}\n\
         Tốc độ giới hạn: {str(self.speed_limit) + '(km/h)' if self.speed_limit else not_defined}\n\
-        Thời điểm ghi nhận: {self.record_time if self.record_time else not_defined}\n\
+        Thời điểm ghi nhận: {self.record_time.strftime('%d%m%y-%H%M%S') if self.record_time else not_defined}\n\
         Vị trí ghi nhận: {'(' + str(self.latitude) + ', ' + str(self.longitude) + ')' if self.latitude is not None and self.longitude is not None else not_defined}\n\
-        Thiết bị ghi nhận: {self.device_info if self.device_info else not_defined}\n\
-        Ghi chú: {self.description if self.description else ''}"
+        {'Thiết bị ghi nhận: ' + self.device_info if self.device_info else ''}\n\
+        {'Ghi chú: ' + self.description if self.description else ''}"
 
     def __repr__(self):
         return f"### BEGIN IMAGE ### >>\

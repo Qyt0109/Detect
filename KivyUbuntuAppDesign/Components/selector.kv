@@ -1,0 +1,22 @@
+
+
+<Selector>:
+    size: root.width, root.height
+    padding: 50
+    spacing: 20
+    FileChooserIconView:
+        id: file_chooser
+        path: "./KivyAppDesign/CapturedImages"
+        on_selection: root.on_select(selection = self.selection)
+    BoxLayout:
+        id: previewer
+        orientation: 'vertical'
+        Image:
+            id: preset_image
+        Button:
+            text: "Chọn"
+            padding: "20px"
+            pos_hint: {'center_y':.5}
+            size_hint: (1, None)
+            #icon_size: '80px'
+            on_release: root.selected_preset_image(application = app)

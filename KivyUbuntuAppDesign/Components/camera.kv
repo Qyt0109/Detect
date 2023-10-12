@@ -1,0 +1,91 @@
+#:import Factory kivy.factory.Factory
+
+<SelectPresetImagePopup>:
+    id: select_preset_image_popup
+    title: "Chọn ảnh vi phạm"
+    #auto_dismiss: False
+    orientation: "vertical"
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    size_hint: (0.8, 0.8)
+    BoxLayout:
+        id: select_preset_image_popup_content
+        # orientation: "vertical"
+        size: root.width, root.height
+        padding: 50
+        spacing: 20
+        FileChooserIconView:
+            id: select_preset_image_file_chooser
+            path: "./KivyAppDesign/CapturedImages"
+            on_selection: root.on_select(application = app, selection = self.selection)
+        BoxLayout:
+            id: previewer
+            orientation: 'vertical'
+            Image:
+                id: select_preset_image_previewer
+                source: app.root.ids["screen_manager"].ids["capturing_screen"].ids["capturing_camera_layout"].selected_preset_image[0] if app.root.ids["screen_manager"].ids["capturing_screen"].ids["capturing_camera_layout"].selected_preset_image else ""
+            BoxLayout:
+                #padding: "20px"
+                spacing: "40px"
+                pos_hint: {'center_y':.5}
+                size_hint: (1, None)
+                Button:
+                    text: "Chọn"
+                    padding: "20px"
+                    pos_hint: {'center_y':.5}
+                    size_hint: (1, None)
+                    #icon_size: '80px'
+                    on_release: root.selected_preset_image(application = app)
+                Button:
+                    text: "Gỡ bỏ"
+                    padding: "20px"
+                    pos_hint: {'center_y':.5}
+                    size_hint: (1, None)
+                    #icon_size: '80px'
+                    on_release: root.remove_preset_image(application = app)
+                Button:
+                    text: "Huỷ"
+                    padding: "20px"
+                    pos_hint: {'center_y':.5}
+                    size_hint: (1, None)
+                    #icon_size: '80px'
+                    on_release: root.dismiss()
+
+<CapturingCamera>:
+    orientation: "vertical"
+    Camera:
+        id: capturing_camera
+        resolution: (2560, 1600)
+        size: root.width, root.height
+        size_hint: (None, None)  # You can adjust the width and height as needed
+        pos_hint: {'top': 1}  # This will anchor the camera to the top of the layout
+        index: 0
+        play: True
+        allow_stretch: True
+        keep_ratio: True
+    MDFloatingActionButton:
+        icon: "camera"
+        md_bg_color: 120/256, 120/256, 120/256, 1
+        height: '64px'
+        size_hint_y: None
+        x: self.parent.width - self.width - 20  # Align to the right edge
+        pos_hint: {'center_y': 0.5}
+        on_release: root.capture(callback = app.onCameraCaptured)
+    MDFloatingActionButton:
+        icon: "camera-flip"
+        md_bg_color: 120/256, 120/256, 120/256, 1
+        height: "32px"
+        size_hint_y: None
+        x: 20
+        pos_hint: {'center_y': 0.8}
+        on_release: root.change_camera()
+    MDFloatingActionButton:
+        id: select_preset_image
+        icon: "folder"
+        md_bg_color: 120/256, 120/256, 120/256, 1
+        theme_icon_color: "Custom"
+        icon_color: "white"
+        height: "32px"
+        size_hint_y: None
+        x: 20
+        pos_hint: {'center_y': 0.2}
+        on_release: Factory.SelectPresetImagePopup().open()

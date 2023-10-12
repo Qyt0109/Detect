@@ -1,0 +1,22 @@
+#: import Header KivyUbuntuAppDesign.Components.header.Header
+#: import Footer KivyUbuntuAppDesign.Components.footer.Footer
+#: import MainScreenManager KivyUbuntuAppDesign.Screens.screen_manager.MainScreenManager
+<MainDesign>:
+    orientation: 'vertical'
+    # Header
+    Header:
+        id: header
+        md_bg_color: 120/256, 120/256, 120/256, 1
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: "160px"
+    # Screen manager
+    MainScreenManager:
+        id: screen_manager
+    # Footer
+    Footer:
+        id: footer
+        md_bg_color: 120/256, 120/256, 120/256, 1
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: "160px"

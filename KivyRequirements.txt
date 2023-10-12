@@ -3,9 +3,11 @@
 
 # pip install --upgrade setuptools
 # pip install ez_setup
-pillow
+psutil
+
+pillow==9.5.0
 Cython
-kivy
-kivymd
+kivy==1.4.0
+kivymd==1.0.1
 pygame
 opencv-python

@@ -1,0 +1,22 @@
+#: import CapturingScreen KivyUbuntuAppDesign.Screens.capturing.CapturingScreen
+#: import CapturedScreen KivyUbuntuAppDesign.Screens.captured.CapturedScreen
+#: import AlbumScreen KivyUbuntuAppDesign.Screens.album.AlbumScreen
+
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+#: import NoTransition kivy.uix.screenmanager.NoTransition 
+
+
+<MainScreenManager>:
+    transition: NoTransition()
+    CapturingScreen:
+        id: capturing_screen
+        name: "capturing_screen"
+        md_bg_color: 160/256, 160/256, 160/256, 1
+    CapturedScreen:
+        id: captured_screen
+        name: "captured_screen"
+        md_bg_color: 160/256, 160/256, 160/256, 1
+    AlbumScreen:
+        id: album_screen
+        name: "album_screen"
+        md_bg_color: 160/256, 160/256, 160/256, 1

@@ -1,0 +1,35 @@
+
+<CapturedScreen>:
+    BoxLayout:
+        id: captured_image_layout
+        orientation: "vertical"
+        BoxLayout:
+            id: captured_viewer
+            Image:
+                id: image_view
+                source: root.image_source
+            BoxLayout:
+                id: image_info
+                orientation: 'vertical'
+                Label:
+                    text:'Ảnh đã chụp'
+        BoxLayout:
+            padding: "20px"
+            spacing: "40px"
+            size_hint_y: None
+            height: "160px"
+            Button:
+                id: go_to_capturing_screen
+                pos_hint: {'center_y':.5}
+                size_hint: (1, None)
+                #on_release: root.goToScreen("capturing_screen")
+            Button:
+                id: go_to_capturing_screen
+                pos_hint: {'center_y':.5}
+                size_hint: (1, None)
+                #on_release: root.goToScreen("capturing_screen")
+            Button:
+                id: go_to_capturing_screen
+                pos_hint: {'center_y':.5}
+                size_hint: (1, None)
+                #on_release: root.goToScreen("capturing_screen")

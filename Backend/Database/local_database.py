@@ -8,7 +8,7 @@ from sqlalchemy import desc, func
 
 class DatabaseManager:
 
-    def __init__(self, session: Session = default_session):
+    def __init__(self, session: Session = default_session): # type: ignore
         self.session = session
 
     def auto_session(func):

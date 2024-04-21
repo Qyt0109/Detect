@@ -5,13 +5,13 @@ backcall==0.2.0
 boto3==1.28.9
 botocore==1.31.9
 cachetools==5.3.1
-certifi==2023.7.22
+# certifi==2023.7.22
 chardet==4.0.0
 charset-normalizer==3.2.0
 click==8.1.6
 coloredlogs==15.0.1
 contourpy==1.1.0
-cycler==0.11.0
+# cycler==0.11.0
 decorator==5.1.1
 executing==1.2.0
 filelock==3.12.2
@@ -28,7 +28,7 @@ grpcio==1.56.2
 gunicorn==19.9.0
 huggingface-hub==0.16.4
 humanfriendly==10.0
-idna==3.4
+# idna==3.4
 importlib-metadata==6.8.0
 importlib-resources==6.0.0
 ipython==8.12.2
@@ -63,7 +63,7 @@ pyasn1==0.5.0
 pyasn1-modules==0.3.0
 pybboxes==0.1.6
 Pygments==2.15.1
-pyparsing==3.0.9
+# pyparsing==3.0.9
 PyQt6==6.5.1
 PyQt6-Qt6==6.5.1
 PyQt6-sip==13.5.1
@@ -112,3 +112,23 @@ zipp==3.16.2
 PySide6
 pydantic
 sqlalchemy
+
+thop
+IPython
+torch
+matplotlib
+PyYAML
+torchvision
+tqdm
+tensorboard
+pandas
+seaborn
+pydantic
+psutil
+pillow
+Cython
+kivy
+opencv-python
+
+sqlalchemy
+python-dotenv
